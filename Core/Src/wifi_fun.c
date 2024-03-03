@@ -39,6 +39,8 @@ static void wifiPowerOn_After_data_update(void);
 static void Get_BeiJing_Time(void);
 
 
+
+
 void PowerOn_Host(void (* poweronHandler)(void))
 {
     PowerOn = poweronHandler;  
@@ -103,10 +105,10 @@ void RunWifi_Command_Handler(void)
 		   WIFI_WBR3_EN();
 	      // mcu_set_wifi_mode(AP_STATE);//AP_STATE
            mcu_set_wifi_mode(SMART_CONFIG);//smart
-		   
+		   wifi_t.gTimer_beijing_time=0;
 
 		 if(mcu_get_wifi_work_state() ==WIFI_CONN_CLOUD){
-		 
+		    wifi_t.gTimer_beijing_time=0;
 	        wifi_t.wifiRun_Cammand_label = wifi_up_update_tuya_cloud_data;
 			
 				
@@ -166,18 +168,17 @@ void RunWifi_Command_Handler(void)
             }
 	
 
-		 if(wifi_t.gTimer_beijing_time > 30){
+		 if(wifi_t.gTimer_beijing_time > 90 &&  wifi_t.getGreenTime !=2){
                wifi_t.gTimer_beijing_time=0;
 			 wifi_t.getGreenTime =1;
 			   mcu_get_green_time();
 		 
-             //  mcu_write_rtctime(wifi_t.getGreenwichTime);
-			   
-              // SendData_Real_GMT( wifi_t.getGreenwichTime[4], wifi_t.getGreenwichTime[5], wifi_t.getGreenwichTime[6]);
 		     
 		     wifi_t.wifiRun_Cammand_label=wifi_up_update_tuya_cloud_data;
 
 	      }
+
+		
 
 		 if(wifi_t.gTimer_up_dht11 >0){ //1 minutes
 		   	  wifi_t.gTimer_up_dht11=0;
@@ -201,6 +202,7 @@ void RunWifi_Command_Handler(void)
         
 	}
 }
+
 /*****************************************************************************
 函数名称 : static void Connect_Tuya_Wifi(void)
 功能描述 : wifi状态led控制

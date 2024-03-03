@@ -99,7 +99,7 @@ typedef struct _WIFI_FUN{
 	uint8_t gTimer_beijing_time;
 	uint8_t get_greenwich_error;
 	uint8_t gTimer_gmt;
-	uint8_t getGreenwichTime[7];
+	uint8_t getGreenwichTime[3];
 	
 
 

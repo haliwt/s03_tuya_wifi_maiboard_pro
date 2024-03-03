@@ -7,7 +7,7 @@
 //static CProcess1 cprocess;
 RUN_T run_t; 
 
-
+static void get_green_time_to_disp_board(void);
  /**********************************************************************
 	*
 	*Functin Name: void RunCommand_Order(void)
@@ -115,9 +115,25 @@ void RunCommand_MainBoard_Handler(void)
 	           }
 
 	     }
+	get_green_time_to_disp_board();
 
 }
 
+static void get_green_time_to_disp_board(void)
+{
+      if(wifi_t.getGreenTime ==2){
+		wifi_t.getGreenwichTime[0]=rx_wifi_data[10] + 8; //hours
+		wifi_t.getGreenwichTime[1]=rx_wifi_data[11] ;  //minutes
+		wifi_t.getGreenwichTime[2]=rx_wifi_data[12] ; //seconds
 
+        SendData_Real_GMT( wifi_t.getGreenwichTime[0], wifi_t.getGreenwichTime[1], wifi_t.getGreenwichTime[2]);
+		//HAL_Delay(5);
+		wifi_t.getGreenTime =0;
+		wifi_t.gTimer_beijing_time =0;
+
+	  }
+
+
+}
 
     

@@ -566,15 +566,15 @@ void mcu_get_greentime(unsigned char time[])
     */
     if(time[0] == 1) {
         //正确接收到wifi模块返回的格林数据
-        wifi_t.get_greenwich_error =0;
-        wifi_t.getGreenwichTime[0]  = time[0];
-		wifi_t.getGreenwichTime[1] = time[1];
-		wifi_t.getGreenwichTime[2] = time[2];
-	    wifi_t.getGreenwichTime[3] = time[3];
-        wifi_t.getGreenwichTime[4] = time[4];
-		wifi_t.getGreenwichTime[5] = time[5];
-	    wifi_t.getGreenwichTime[6] = time[6];
-        
+//        wifi_t.get_greenwich_error =0;
+//        wifi_t.getGreenwichTime[0]  = time[0];
+//		wifi_t.getGreenwichTime[1] = time[1];
+//		wifi_t.getGreenwichTime[2] = time[2];
+//	    wifi_t.getGreenwichTime[3] = time[3];
+//        wifi_t.getGreenwichTime[4] = time[4];
+//		wifi_t.getGreenwichTime[5] = time[5];
+//	    wifi_t.getGreenwichTime[6] = time[6];
+//        
     }else {
         //获取格林时间出错,有可能是当前wifi模块未联网
         wifi_t.get_greenwich_error =2;
@@ -604,14 +604,14 @@ void mcu_write_rtctime(unsigned char time[])
    */
     if(time[0] == 1) {
         //正确接收到wifi模块返回的本地时钟数据
-         wifi_t.get_greenwich_error =0;
-        wifi_t.getGreenwichTime[0]  = time[0];
-		wifi_t.getGreenwichTime[1] = time[1];
-		wifi_t.getGreenwichTime[2] = time[2];
-	    wifi_t.getGreenwichTime[3] = time[3];
-        wifi_t.getGreenwichTime[4] = time[4];
-		wifi_t.getGreenwichTime[5] = time[5];
-	    wifi_t.getGreenwichTime[6] = time[6];
+//         wifi_t.get_greenwich_error =0;
+//        wifi_t.getGreenwichTime[0]  = time[0];
+//		wifi_t.getGreenwichTime[1] = time[1];
+//		wifi_t.getGreenwichTime[2] = time[2];
+//	    wifi_t.getGreenwichTime[3] = time[3];
+//        wifi_t.getGreenwichTime[4] = time[4];
+//		wifi_t.getGreenwichTime[5] = time[5];
+//	    wifi_t.getGreenwichTime[6] = time[6];
         
     }else {
         //获取本地时钟数据出错,有可能是当前wifi模块未联网
