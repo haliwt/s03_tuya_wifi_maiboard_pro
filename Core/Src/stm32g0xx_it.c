@@ -223,6 +223,7 @@ void USART2_IRQHandler(void)
                if(i> 11){
 			   	wifi_t.getGreenTime =2;
 				i=0;
+			    flag =0;
                }
 			   
 			 }
