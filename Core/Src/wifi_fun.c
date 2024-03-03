@@ -415,7 +415,7 @@ void Wifi_ReceiveData_Handler(uint8_t cmd)
 
 	  case SMART_OFF_ITEM:
 	  if(run_t.gPower_flag ==POWER_ON){
-            run_t.gModel=0;
+            run_t.gModel=0; //mode_timer_timing
 			SendWifiCmd_To_Order(WIFI_MODE_2);
 		    Buzzer_KeySound();
         }
@@ -424,7 +424,7 @@ void Wifi_ReceiveData_Handler(uint8_t cmd)
 		
 	  case SMART_ON_ITEM:
 	  	 if(run_t.gPower_flag ==POWER_ON){
-            run_t.gModel=1;
+            run_t.gModel=1; //AI_mode
 			SendWifiCmd_To_Order(WIFI_MODE_1);
 		    Buzzer_KeySound();
         }
@@ -438,22 +438,7 @@ void Wifi_ReceiveData_Handler(uint8_t cmd)
 			
 			Buzzer_KeySound();
 	        wifi_t.response_wifi_signal_label=0xff;
-//			if(sound_temp ==0){
-//
-//			   sound_temp++;
-//               Buzzer_KeySound();
-//
-//			}
-//			temp = Wifi_ReadParam_Temperature_Value();
-//			if(temp == 1){
-//				wifi_t.response_wifi_signal_label=0xff;
-//				 
-//
-//			}
-//			else{
-//				wifi_t.response_wifi_signal_label=0xff;
-//                  
-//			}
+
          }
 	    wifi_t.response_wifi_signal_label=0xff;
 	  break;
@@ -477,21 +462,7 @@ void Wifi_ReceiveData_Handler(uint8_t cmd)
 		  SendWifiData_To_SetTime(wifi_t.setTimesValue);
           wifi_t.response_wifi_signal_label=0xff;
 		  Buzzer_KeySound();
-//          if(sound_timer ==0){
-//		  	 sound_timer ++;
-//		     Buzzer_KeySound();
-//
-//          }
-//		  temp = Wifi_ReadParam_Timer_Value();
-//		  if(temp == 1){
-//		  	
-//		  	wifi_t.response_wifi_signal_label=0xff;
-//		  	}
-//		  else{
-//		  	
-//		  	wifi_t.response_wifi_signal_label=0xff;
-//
-//		  	}
+
 		 }
 		  wifi_t.response_wifi_signal_label=0xff;
 		break;
@@ -575,7 +546,7 @@ static void wifiPowerOn_After_data_update(void)
     mcu_dp_value_update(DPID_HUMIDITY,wifi_t.dispHumidityValue); //VALUE型数据上报;
     mcu_dp_value_update(DPID_SET_TEMPERATURE,0); //VALUE型数据上报;
 
-	 mcu_dp_bool_update(DPID_SMART,1); //BOOL型数据上报;
+	 mcu_dp_bool_update(DPID_SMART,1); //BOOL型数据上报;mode_AI
     mcu_dp_value_update(DPID_FAN,run_t.set_wind_speed_value); //VALUE型数据上报;
   
 

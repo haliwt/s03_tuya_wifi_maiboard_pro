@@ -30,6 +30,15 @@ typedef enum{
 }Rx_Receive_state;
 
 
+typedef enum _ai_mode{
+
+  MODE_AI = 0x04,
+  MODE_TIMER = 0x14,
+
+
+}ai_mode_state;
+
+
 
 void Decode_RunCmd(void);
 

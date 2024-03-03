@@ -127,7 +127,7 @@ int main(void)
 	
 	
    MainBoard_Self_Inspection_PowerOn_Fun();
-    RunCommand_MainBoard_Handler();
+   RunCommand_MainBoard_Handler();
 	
    }
   /* USER CODE END 3 */

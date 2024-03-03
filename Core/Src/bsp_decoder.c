@@ -28,12 +28,7 @@ void Decode_RunCmd(void)
               //fast led blink 
               SendWifiData_To_Cmd(0x52);
 			  Buzzer_KeySound();	
-            //  wifi_t.wifiRun_Cammand_label = wifi_link_tuya_cloud;//2 
-//             WIFI_WBR3_DISABLE();
-//             HAL_Delay(1000);
-//			 WIFI_WBR3_EN();
-
-				tuya_t.wifi_login_process =1;
+              tuya_t.wifi_login_process =1;
              
               
 		   }
@@ -42,12 +37,14 @@ void Decode_RunCmd(void)
                 Buzzer_KeySound(); 
 		   }
 		   else if(cmdType_2==0x14){
-               // run_t.gModel =2; //turn off
+                run_t.gModel =0; //mode_timer,timer_timing_fun
                 Buzzer_KeySound();
+		        mcu_dp_bool_update(DPID_SMART,0); //BOOL型数据上报;mode_timer_timing
             }
             else if(cmdType_2==0x04){
-               // run_t.gModel =1;  //turn on
+                run_t.gModel =1;  //mode_ai,works_time.
                 Buzzer_KeySound();
+			    mcu_dp_bool_update(DPID_SMART,1); //BOOL型数据上报;mode_AI
             }
            
            

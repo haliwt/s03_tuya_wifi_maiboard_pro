@@ -61,6 +61,17 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 			state=0;
 			run_t.decodeFlag =0;
 		}
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_PEF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_FEF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_NEF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_OREF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_IDLEF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_TCF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_LBDF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_CTSF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_CMF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_WUF);
+	__HAL_UART_CLEAR_FLAG(&huart1, UART_CLEAR_TXFECF);
 		HAL_UART_Receive_IT(&huart1,inputBuf,1);//UART receive data interrupt 1 byte
 		
 	}
