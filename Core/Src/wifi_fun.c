@@ -166,13 +166,14 @@ void RunWifi_Command_Handler(void)
             }
 	
 
-		 if(wifi_t.gTimer_beijing_time > 29){
+		 if(wifi_t.gTimer_beijing_time > 30){
                wifi_t.gTimer_beijing_time=0;
+			 wifi_t.getGreenTime =1;
 			   mcu_get_greentime(time);
 		 
-               mcu_write_rtctime(wifi_t.getGreenwichTime);
+             //  mcu_write_rtctime(wifi_t.getGreenwichTime);
 			   
-               SendData_Real_GMT( wifi_t.getGreenwichTime[4], wifi_t.getGreenwichTime[5], wifi_t.getGreenwichTime[6]);
+              // SendData_Real_GMT( wifi_t.getGreenwichTime[4], wifi_t.getGreenwichTime[5], wifi_t.getGreenwichTime[6]);
 		     
 		     wifi_t.wifiRun_Cammand_label=wifi_up_update_tuya_cloud_data;
 
