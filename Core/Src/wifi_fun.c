@@ -169,7 +169,7 @@ void RunWifi_Command_Handler(void)
 		 if(wifi_t.gTimer_beijing_time > 30){
                wifi_t.gTimer_beijing_time=0;
 			 wifi_t.getGreenTime =1;
-			   mcu_get_greentime(time);
+			   mcu_get_green_time();
 		 
              //  mcu_write_rtctime(wifi_t.getGreenwichTime);
 			   
